@@ -36,7 +36,7 @@ except IOError, exp:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if ENV == 'PRODUCTION':
-    DEBUG = True
+    DEBUG = False
     ALLOWED_HOSTS = ['util.services', ]
     # CSRF_COOKIE_SECURE = True
     # SESSION_COOKIE_SECURE = True
