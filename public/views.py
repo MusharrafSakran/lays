@@ -9,7 +9,7 @@ import re
 
 
 def index(request):
-    return render_to_response('public/index.html', context_instance=RequestContext(request))
+    return render(request, 'public/index.html', {})
 
 
 def subscribe(request):
