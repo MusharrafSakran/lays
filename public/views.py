@@ -8,7 +8,6 @@ import re
 
 
 def index(request):
-    messages.info(request, 'HI')
     return render(request, 'public/index.html')
 
 
