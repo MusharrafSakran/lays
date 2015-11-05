@@ -38,8 +38,8 @@ except IOError, exp:
 if ENV == 'PRODUCTION':
     DEBUG = True
     ALLOWED_HOSTS = ['util.services', ]
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_SECURE = True
+    # CSRF_COOKIE_SECURE = True
+    # SESSION_COOKIE_SECURE = True
     STATIC_ROOT = os.path.join(BASE_DIR, "static_files/")
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 else:

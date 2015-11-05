@@ -64,7 +64,8 @@
 					<h1>Util.Services</h1>
 					<h2 class="subtitle">We're working hard to improve our website and we'll ready to launch after</h2>
 					<div id="countdown"></div>
-					<form class="form-inline signup" role="form" method="post" action="{% url 'public:subscribe' %}">{% csrf_token %}
+					<form class="form-inline signup" role="form" method="post" action="{% url 'public:subscribe' %}">
+                        {% csrf_token %}
 					  <div class="form-group">
 					    <input type="email" class="form-control" id="email" name="email" placeholder="email address">
 					  </div>
