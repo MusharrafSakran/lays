@@ -56,8 +56,12 @@ def validate_iban(iban):
 
 
 def detect_iban_bank(iban):
-    print iban[2:4]
-    print iban[4:6]
     # bank_name = [i for i, v in enumerate(_iban_banks) if v[0] == iban[4:2]]
     bank_name = dict(_iban_banks)[int(iban[4:6])]
     return bank_name
+
+
+def validate_mobile_number(number):
+    if re.match(r'^(009665|9665|\+9665|05)(5|0|3|6|4|9|1|8|7)([0-9]{7})$', number):
+        return True
+    return False

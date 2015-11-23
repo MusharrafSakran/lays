@@ -119,6 +119,5 @@ target/
 local_settings.py
 
 
+/public/static/public/js/googleAnalytics.js
 db.sqlite3
-store/static/store/js/conf.js
-temp_files

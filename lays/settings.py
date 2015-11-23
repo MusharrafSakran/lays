@@ -57,6 +57,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'api',
     'rest_framework',
+    'rest_framework_swagger',
     'public',
 )
 
@@ -89,6 +90,40 @@ TEMPLATES = [
         },
     },
 ]
+
+SWAGGER_SETTINGS = {
+    # 'exclude_namespaces': [],
+    'api_version': '0.1',
+    # 'api_path': '/',
+    # 'enabled_methods': [
+    #     'get',
+    #     'post',
+    #     'put',
+    #     'patch',
+    #     'delete'
+    # ],
+    # 'api_key': '',
+    # 'is_authenticated': False,
+    # 'is_superuser': False,
+    # 'permission_denied_handler': None,
+    # 'resource_access_handler': None,
+    # 'base_path':'helloreverb.com/docs',
+    'info': {
+        'contact': 'musharraf.altamimi@gmail.com',
+        'description': 'This is a development util services API. '
+                       'You can find out more about API at '
+                       '<a href="http://util.services">'
+                       'http://util.services</a>.'
+                       'For this sample, you can use the api key '
+                       '"special-key" to test '
+                       'the authorization filters',
+        'license': 'Apache 2.0',
+        'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
+        'termsOfServiceUrl': 'http://helloreverb.com/terms/',
+        'title': 'Util Services API',
+    },
+    'doc_expansion': 'none',
+}
 
 WSGI_APPLICATION = 'lays.wsgi.application'
 
