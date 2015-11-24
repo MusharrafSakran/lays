@@ -106,7 +106,7 @@ REST_FRAMEWORK = {
 SWAGGER_SETTINGS = {
     # 'exclude_namespaces': [],
     'api_version': '0.1',
-    # 'api_path': '/',
+    'api_path': '/',
     # 'enabled_methods': [
     #     'get',
     #     'post',
@@ -131,7 +131,7 @@ SWAGGER_SETTINGS = {
         'termsOfServiceUrl': '',
         'title': 'Util Services API',
     },
-    'doc_expansion': 'none',
+    'doc_expansion': 'list',
 }
 
 WSGI_APPLICATION = 'lays.wsgi.application'
