@@ -43,6 +43,8 @@ def validate_iban_view(request):
     responseMessages:
         - code: 400
           message: IBAN is not provided
+        - code: 429
+          message: Client has been throttled by exceeding daily limit (175 requests/day)
     """
     if 'number' not in request.data:
         return Response({'message': 'IBAN is not provided'}, status.HTTP_400_BAD_REQUEST)
@@ -85,6 +87,8 @@ def validate_mobile_number_view(request):
     responseMessages:
         - code: 400
           message: mobile number is not provided
+        - code: 429
+          message: Client has been throttled by exceeding daily limit (175 requests/day)
     """
     if 'number' not in request.data:
         return Response({'message': 'mobile number is not provided'}, status.HTTP_400_BAD_REQUEST)
