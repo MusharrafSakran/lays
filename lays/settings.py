@@ -124,14 +124,11 @@ SWAGGER_SETTINGS = {
         'contact': 'musharraf.altamimi@gmail.com',
         'description': 'This is a development util services API. '
                        'You can find out more about API at '
-                       '<a href="http://util.services">'
-                       'http://util.services</a>.'
-                       'For this sample, you can use the api key '
-                       '"special-key" to test '
-                       'the authorization filters',
+                       '<a href="http://util.services/docs">'
+                       'http://util.services/docs</a>.',
         'license': 'Apache 2.0',
         'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
-        'termsOfServiceUrl': 'http://helloreverb.com/terms/',
+        'termsOfServiceUrl': '',
         'title': 'Util Services API',
     },
     'doc_expansion': 'none',
