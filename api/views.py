@@ -41,10 +41,12 @@ def validate_iban_view(request):
           message: IBAN is not provided
     """
     if 'number' not in request.data:
-        return Response({'message': 'IBAN message is not provided'}, status.HTTP_400_BAD_REQUEST)
+        return Response({'message': 'IBAN is not provided'}, status.HTTP_400_BAD_REQUEST)
     iban = request.data['number']
+    iban_valid = validate_iban(iban)
     return Response(
-        {'number': request.data['number'], 'valid': validate_iban(iban), 'bank': detect_iban_bank(iban)})
+        {'number': request.data['number'], 'valid': iban_valid,
+         'bank': detect_iban_bank(iban) if iban_valid is True else ''})
 
 
 @api_view(["POST"])
