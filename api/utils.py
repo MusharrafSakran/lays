@@ -1,6 +1,6 @@
-__author__ = 'MUSHARRAF'
+# -*- coding: utf-8 -*-
 import re
-
+__author__ = 'MUSHARRAF'
 _country2length = dict(
     AL=28, AD=24, AT=20, AZ=28, BE=16, BH=22, BA=20, BR=29,
     BG=22, CR=21, HR=21, CY=28, CZ=24, DK=18, DO=28, EE=20,
@@ -37,6 +37,32 @@ _iban_banks = [
     (84, 'Turkiye Cumhuriyeti Ziraat Bankasi'),
 ]
 
+_iban_banks_ar = [
+    (10, 'البنك الاهلي'),
+    (20, 'بنك الرياض'),
+    (15, 'بنك البلاد'),
+    (05, 'بنك الإنماء'),
+    (60, 'بنك الجزيرة'),
+    (80, 'بنك الراجحي'),
+    (30, 'البنك العربي'),
+    (76, 'بنك مسقط'),
+    (85, 'بي إم بي باريسباس'),
+    (81, 'بنك دويتشه'),
+    (95, 'البنك الإماراتي العالمي'),
+    (90, 'البنك الخليجي العالمي'),
+    (86, 'بنك جي بي مورغان تشايس'),
+    (71, 'البنك الوطني البحريني'),
+    (75, 'النبك الوطني الكويتي'),
+    (82, 'البنك الوطني الباكستاني'),
+    (45, 'ساب'),
+    (40, 'سامبا'),
+    (55, 'البنك السعودي الفرنسي'),
+    (50, 'البنك السعودي الهولندي'),
+    (65, 'البنك السعودي للإستثمار'),
+    (83, 'البنك الحكومي الهندي'),
+    (84, 'بنك كمهورياتي زيرات التركي'),
+]
+
 
 def validate_iban(iban):
     # Ensure upper alphanumeric input.
@@ -58,7 +84,8 @@ def validate_iban(iban):
 def detect_iban_bank(iban):
     # bank_name = [i for i, v in enumerate(_iban_banks) if v[0] == iban[4:2]]
     bank_name = dict(_iban_banks)[int(iban[4:6])]
-    return bank_name
+    bank_name_ar = dict(_iban_banks_ar)[int(iban[4:6])]
+    return [bank_name, bank_name_ar]
 
 
 def validate_mobile_number(number):

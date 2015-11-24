@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -20,6 +21,9 @@ def validate_iban_view(request):
         required: true
         type: boolean
       bank:
+        required: true
+        type: string
+      bank_ar:
         required: true
         type: string
 
@@ -46,7 +50,8 @@ def validate_iban_view(request):
     iban_valid = validate_iban(iban)
     return Response(
         {'number': request.data['number'], 'valid': iban_valid,
-         'bank': detect_iban_bank(iban) if iban_valid is True else ''})
+         'bank': detect_iban_bank(iban)[0] if iban_valid is True else '',
+         'bank_ar': detect_iban_bank(iban)[1].decode('utf-8') if iban_valid is True else ''})
 
 
 @api_view(["POST"])
