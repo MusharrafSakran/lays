@@ -91,6 +91,12 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
+
 SWAGGER_SETTINGS = {
     # 'exclude_namespaces': [],
     'api_version': '0.1',
