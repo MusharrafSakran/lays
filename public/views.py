@@ -18,5 +18,5 @@ def subscribe(request):
         messages.error(request, 'email is not correct !')
     else:
         new_subscriber, created = Subscribers.objects.get_or_create(email=email)
-        messages.success(request, 'you are successfully subscribed !')
+        messages.success(request, "We've got your interest, thank you!")
     return HttpResponseRedirect(reverse('public:index'))

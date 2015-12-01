@@ -100,12 +100,14 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_THROTTLE_RATES': {
         'anon': '175/day',
-    }
+    },
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
+    'DEFAULT_VERSION': '1.0'
 }
 
 SWAGGER_SETTINGS = {
     # 'exclude_namespaces': [],
-    'api_version': '0.1',
+    'api_version': '1.0',
     'api_path': '/',
     # 'enabled_methods': [
     #     'get',
@@ -122,10 +124,10 @@ SWAGGER_SETTINGS = {
     # 'base_path':'helloreverb.com/docs',
     'info': {
         'contact': 'musharraf.altamimi@gmail.com',
-        'description': 'This is a development util services API. '
-                       'You can find out more about API at '
-                       '<a href="http://util.services/docs">'
-                       'http://util.services/docs</a>.',
+        'description': 'This is a development util services API, '
+                       'Services that are widely used by developers and they are hard to implement, '
+                       'We implemented it once and make it able to use infinitely, '
+                       'made with love by Developers to Developers.',
         'license': 'Apache 2.0',
         'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
         'termsOfServiceUrl': '',

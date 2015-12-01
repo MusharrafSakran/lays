@@ -61,34 +61,55 @@
         <div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-lg-12">
-					<h1>Util.Services</h1>
-					<h2 class="subtitle">We're working hard to improve our website and we'll ready to launch after</h2>
-					<div id="countdown"></div>
-					<form class="form-inline signup" role="form" method="post" action="{% url 'public:subscribe' %}">
-                        {% csrf_token %}
-					  <div class="form-group">
-					    <input type="email" class="form-control" id="email" name="email" placeholder="email address">
-					  </div>
-					  <button type="submit" class="btn btn-theme">Get notified!</button>
-					</form>		
-					
+					<h1 style="margin-bottom: 10px;">Util.Services</h1>
+                    <p style="color: white; margin-bottom: 50px;"> made with love by Developers to Developers
+                        <span  class="glyphicon glyphicon-heart"> </span>
+                    </p>
+					<h2 class="subtitle">
+                        This is a development util services API,
+                       Services that are widely used by developers and they are hard to implement,
+                       We implemented it once and make it able to use infinitely.
+                    </h2>
+{#					<div id="countdown"></div>#}
 				</div>
 				
 			</div>
+            <div class="row" style="margin-top: 7%;">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h3 style="color: white;">Clear Documentation is enough to start working
+                    </h3>
+                    <a href="/docs/" class="btn btn-theme">Go To Documentation</a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 7%;">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h3 style="color: white;">Are you interested to collaborate in this thing ?</h3>
+                    <form class="form-inline signup" role="form" method="post" action="{% url 'public:subscribe' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" name="email"
+                                   placeholder="email address">
+                        </div>
+                        <button type="submit" class="btn btn-theme">show my interest!</button>
+                    </form>
+                </div>
+            </div>
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3">
-						<p class="copyright">Copyright &copy; 2015 - <a href="http://util.services">util.services</a></p>
+						<p class="copyright">Copyright &copy; 2015<script>new Date().getFullYear()>2015&&document.write("-"+new Date().getFullYear());</script>
+                            ~ <a href="https://shahbendar.com" target="_blank">Powered by shahbendar.com</a>
+                        </p>
 				</div>
 			</div>		
 		</div>
 	</div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="{% static 'public/js/jquery.countdown.min.js' %}"></script>
-	<script type="text/javascript">
-  $('#countdown').countdown('2016/01/01', function(event) {
-    $(this).html(event.strftime('%w weeks %d days <br /> %H:%M:%S'));
-  });
-</script>
+{#	<script src="{% static 'public/js/jquery.countdown.min.js' %}"></script>#}
+{#	<script type="text/javascript">#}
+{#  $('#countdown').countdown('2016/01/01', function(event) {#}
+{#    $(this).html(event.strftime('%w weeks %d days <br /> %H:%M:%S'));#}
+{#  });#}
+{#</script>#}
   <script src="{% static 'public/js/googleAnalytics.js' %}"></script>
   </body>
 </html>
