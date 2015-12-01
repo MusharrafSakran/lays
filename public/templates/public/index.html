@@ -78,13 +78,14 @@
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h3 style="color: white;">Clear Documentation is enough to start working
                     </h3>
-                    <a href="/docs/" class="btn btn-theme">Go To Documentation</a>
+                    <a href="/docs/" class="btn btn-theme" style="margin-top: 2%;">Go To Documentation</a>
                 </div>
             </div>
             <div class="row" style="margin-top: 7%;">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h3 style="color: white;">Are you interested to collaborate in this thing ?</h3>
-                    <form class="form-inline signup" role="form" method="post" action="{% url 'public:subscribe' %}">
+                    <form class="form-inline signup" role="form" method="post" action="{% url 'public:subscribe' %}"
+                     style="margin-top: 2%;">
                         {% csrf_token %}
                         <div class="input-group">
                             <input type="email" class="form-control" id="email" name="email"
@@ -97,7 +98,7 @@
                 </div>
             </div>
 			<div class="row">
-				<div class="col-lg-6 col-lg-offset-3">
+				<div class="col-lg-6 col-lg-offset-3"  style="margin-top: 4%;">
 						<p class="copyright">Copyright &copy; 2015<script>new Date().getFullYear()>2015&&document.write("-"+new Date().getFullYear());</script>
                             ~ <a href="https://shahbendar.com" target="_blank">Powered by shahbendar.com</a>
                         </p>
