@@ -124,7 +124,8 @@ form.signup input.form-control:focus {
 #wrapper {
 	text-align: center;
 	padding: 50px 0;
-	background: url(../img/main-bg.jpg) no-repeat center top;
+	/*background: url(../img/main-bg.jpg) no-repeat center top;*/
+    background-color: #36465D;
 	background-attachment: relative;
 	background-position: center center;
 	min-height: 650px;
