@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
+from umalqurra.hijri_date import HijriDate
 __author__ = 'MUSHARRAF'
 _country2length = dict(
     AL=28, AD=24, AT=20, AZ=28, BE=16, BH=22, BA=20, BR=29,
@@ -92,3 +93,25 @@ def validate_mobile_number(number):
     if re.match(r'^(009665|9665|\+9665|05)(5|0|3|6|4|9|1|8|7)([0-9]{7})$', number):
         return True
     return False
+
+
+def convert_greg_to_hijri(day, month, year):
+    date = HijriDate(year, month, day, gr=True)
+    return date
+
+
+def convert_hijri_to_greg(day, month, year):
+    date = HijriDate(year, month, day)
+    return date
+
+
+def get_today_date():
+    date = HijriDate.today()
+    return date
+
+
+def get_hijri_month_length(month, year):
+    date = HijriDate(year, month, 1)
+    date = HijriDate(int(date.year_gr), int(date.month_gr), int(date.day_gr), gr=True)
+    return date.month_len
+
