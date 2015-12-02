@@ -101,7 +101,7 @@ def validate_mobile_number_view(request):
 @api_view(["POST"])
 def convert_greg_to_hijri_view(request):
     """
-    Convert Gregorian date to Hijri (Umm-alqura) date
+    Convert Gregorian date to Hijri (Umm-alqura) date, it supports greg range from 1-1-1900 to 31-12-2029
     ---
     # YAML (must be separated by `---`)
 
@@ -158,7 +158,7 @@ def convert_greg_to_hijri_view(request):
           type: string
           paramType: form
         - name: year
-          description: gregorian date year, 2030 > year > 1899
+          description: gregorian date year, 1899 < year < 2030
           required: true
           type: string
           paramType: form
@@ -181,7 +181,7 @@ def convert_greg_to_hijri_view(request):
         day = int(request.data['day'])
         month = int(request.data['month'])
         year = int(request.data['year'])
-        if not 2030 > year > 1899:
+        if not 1899 < year < 2030:
             raise IndexError
         date = convert_greg_to_hijri(day, month, year)
     except ValueError as e:
@@ -197,7 +197,7 @@ def convert_greg_to_hijri_view(request):
 @api_view(["POST"])
 def convert_hijri_to_greg_view(request):
     """
-    Convert Hijri (Umm-alqura) date to Gregorian date
+    Convert Hijri (Umm-alqura) date to Gregorian date, it supports hijri range from 1-1-1356 to 30-12-1450
     ---
     # YAML (must be separated by `---`)
 
@@ -251,7 +251,7 @@ def convert_hijri_to_greg_view(request):
           type: string
           paramType: form
         - name: year
-          description: hijri date year, 1356 < year < 1450
+          description: hijri date year, 1355 < year < 1451
           required: true
           type: string
           paramType: form
@@ -273,7 +273,7 @@ def convert_hijri_to_greg_view(request):
         day = int(request.data['day'])
         month = int(request.data['month'])
         year = int(request.data['year'])
-        if not 1356 < year < 1450:
+        if not 1355 < year < 1451:
             raise IndexError
         date = convert_hijri_to_greg(day, month, year)
     except ValueError:
@@ -286,7 +286,7 @@ def convert_hijri_to_greg_view(request):
 @api_view(["POST"])
 def get_hijri_month_length_view(request):
     """
-    get length for a given Hijri (Umm-alqura) month
+    get length for a given Hijri (Umm-alqura) month, it supports hijri range from 1-1-1356 to 30-12-1450
     ---
     # YAML (must be separated by `---`)
 
@@ -308,7 +308,7 @@ def get_hijri_month_length_view(request):
           type: string
           paramType: form
         - name: year
-          description: hijri date year, 1356 < year < 1450
+          description: hijri date year, 1355 < year < 1451
           required: true
           type: string
           paramType: form
@@ -329,7 +329,7 @@ def get_hijri_month_length_view(request):
     try:
         month = int(request.data['month'])
         year = int(request.data['year'])
-        if not 1356 < year < 1450:
+        if not 1355 < year < 1451:
             raise IndexError
         month_length = get_hijri_month_length(month, year)
     except ValueError:
