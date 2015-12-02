@@ -158,7 +158,7 @@ def convert_greg_to_hijri_view(request):
           type: string
           paramType: form
         - name: year
-          description: gregorian date year > 1899
+          description: gregorian date year, 2030 > year > 1899
           required: true
           type: string
           paramType: form
@@ -181,6 +181,8 @@ def convert_greg_to_hijri_view(request):
         day = int(request.data['day'])
         month = int(request.data['month'])
         year = int(request.data['year'])
+        if not 2030 > year > 1899:
+            raise IndexError
         date = convert_greg_to_hijri(day, month, year)
     except ValueError as e:
         if e.message == 'year=' + str(year) + ' is before 1900; the datetime strftime() methods require year >= 1900':
@@ -249,7 +251,7 @@ def convert_hijri_to_greg_view(request):
           type: string
           paramType: form
         - name: year
-          description: hijri date year, 1210 < year < 1501
+          description: hijri date year, 1356 < year < 1450
           required: true
           type: string
           paramType: form
@@ -271,6 +273,8 @@ def convert_hijri_to_greg_view(request):
         day = int(request.data['day'])
         month = int(request.data['month'])
         year = int(request.data['year'])
+        if not 1356 < year < 1450:
+            raise IndexError
         date = convert_hijri_to_greg(day, month, year)
     except ValueError:
         return Response({'message': 'given date values are incorrect'}, status.HTTP_400_BAD_REQUEST)
@@ -304,7 +308,7 @@ def get_hijri_month_length_view(request):
           type: string
           paramType: form
         - name: year
-          description: hijri date year, 1210 < year < 1501
+          description: hijri date year, 1356 < year < 1450
           required: true
           type: string
           paramType: form
@@ -325,6 +329,8 @@ def get_hijri_month_length_view(request):
     try:
         month = int(request.data['month'])
         year = int(request.data['year'])
+        if not 1356 < year < 1450:
+            raise IndexError
         month_length = get_hijri_month_length(month, year)
     except ValueError:
         return Response({'message': 'given date values are incorrect'}, status.HTTP_400_BAD_REQUEST)
