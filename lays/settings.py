@@ -128,8 +128,8 @@ SWAGGER_SETTINGS = {
                        'Services that are widely used by developers and they are hard to implement, '
                        'We implemented it once and make it able to use infinitely, '
                        'made with love by Developers to Developers.',
-        'license': 'Apache 2.0',
-        'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
+        # 'license': 'Apache 2.0',
+        # 'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
         'termsOfServiceUrl': '',
         'title': 'Util Services API',
     },
