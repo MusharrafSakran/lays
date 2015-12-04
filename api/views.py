@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 # Create your views here.
 from api.utils import validate_iban, detect_iban_bank, validate_mobile_number, convert_greg_to_hijri, \
-    convert_hijri_to_greg, get_hijri_month_length, get_today_date
+    convert_hijri_to_greg, get_hijri_month_length, get_today_date, validate_id
 
 
 @api_view(["POST"])
@@ -394,3 +394,48 @@ def get_today_date_view(request):
     """
 
     return Response(get_today_date().__dict__)
+
+
+@api_view(["POST"])
+def validate_id_view(request):
+    """
+    Validate ANY Saudi Identity Number for Saudi and Non-Saudi IDs
+    ---
+    # YAML (must be separated by `---`)
+
+    type:
+      number:
+        required: true
+        type: string
+      valid:
+        required: true
+        type: boolean
+      type:
+        required: true
+        type: string
+      type_ar:
+        required: true
+        type: string
+
+    omit_serializer: true
+
+    parameters_strategy: merge
+    omit_parameters:
+        - path
+    parameters:
+        - name: number
+          description: Saudi Identity Number
+          required: true
+          type: string
+          paramType: form
+
+    responseMessages:
+        - code: 400
+          message: Identity number is not provided
+        - code: 429
+          message: Client has been throttled by exceeding daily limit (175 requests/day)
+    """
+    if 'number' not in request.data:
+        return Response({'message': 'Identity number is not provided'}, status.HTTP_400_BAD_REQUEST)
+    number = request.data['number']
+    return Response(validate_id(number))

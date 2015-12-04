@@ -64,6 +64,16 @@ _iban_banks_ar = [
     (84, 'بنك كمهورياتي زيرات التركي'),
 ]
 
+_identity_types = [
+    (1, 'Saudi National ID'),
+    (2, 'Non-Saudi Resident ID (Iqama)'),
+]
+
+_identity_types_ar = [
+    (1, 'هوية وطنية سعودية'),
+    (2, 'رقم إقامة لغير السعوديين')
+]
+
 
 def validate_iban(iban):
     # Ensure upper alphanumeric input.
@@ -115,3 +125,25 @@ def get_hijri_month_length(month, year):
     date = HijriDate(int(date.year_gr), int(date.month_gr), int(date.day_gr), gr=True)
     return date.month_len
 
+
+def validate_id(number):
+
+    number = number.strip()
+
+    if not number.isnumeric() or len(number) != 10:
+        return {'valid': False, 'type': '', 'type_ar': '', 'number': number}
+
+    type = number[0]
+    if type != '1' and type != '2':
+        return {'valid': False, 'type': '', 'type_ar': '', 'number': number}
+
+    summ = 0
+    for counter, value in enumerate(number):
+        if counter % 2 == 0:
+            ZFOdd = str((int(value)*2)).ljust(2, '0')
+            summ += int(ZFOdd[0]) + int(ZFOdd[1])
+            pass
+        else:
+            summ += int(value)
+    return {'valid': summ % 10 == 0, 'type': dict(_identity_types)[int(type)] if summ % 10 == 0 else '',
+            'type_ar': dict(_identity_types_ar)[int(type)].decode('utf-8') if summ % 10 == 0 else '', 'number': number}

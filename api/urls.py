@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^convert-hijri-to-greg/$', views.convert_hijri_to_greg_view),
     url(r'^get-hijri-month-length/$', views.get_hijri_month_length_view),
     url(r'^get-today-date/$', views.get_today_date_view),
+    url(r'^validate-identity/$', views.validate_id_view),
 ]
