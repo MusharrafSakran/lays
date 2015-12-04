@@ -45,7 +45,7 @@ def validate_iban_view(request):
         - code: 400
           message: IBAN is not provided
         - code: 429
-          message: Client has been throttled by exceeding daily limit (175 requests/day)
+          message: Client has been throttled by exceeding daily limit (475 requests/day)
     """
     if 'number' not in request.data:
         return Response({'message': 'IBAN is not provided'}, status.HTTP_400_BAD_REQUEST)
@@ -89,7 +89,7 @@ def validate_mobile_number_view(request):
         - code: 400
           message: mobile number is not provided
         - code: 429
-          message: Client has been throttled by exceeding daily limit (175 requests/day)
+          message: Client has been throttled by exceeding daily limit (475 requests/day)
     """
     if 'number' not in request.data:
         return Response({'message': 'mobile number is not provided'}, status.HTTP_400_BAD_REQUEST)
@@ -171,7 +171,7 @@ def convert_greg_to_hijri_view(request):
         - code: 400
           message: given date is out of supported range
         - code: 429
-          message: Client has been throttled by exceeding daily limit (175 requests/day)
+          message: Client has been throttled by exceeding daily limit (475 requests/day)
     """
 
     if 'day' and 'month' and 'year' not in request.data:
@@ -264,7 +264,7 @@ def convert_hijri_to_greg_view(request):
         - code: 400
           message: given date is out of supported range
         - code: 429
-          message: Client has been throttled by exceeding daily limit (175 requests/day)
+          message: Client has been throttled by exceeding daily limit (475 requests/day)
     """
 
     if 'day' and 'month' and 'year' not in request.data:
@@ -321,7 +321,7 @@ def get_hijri_month_length_view(request):
         - code: 400
           message: given date is out of supported range
         - code: 429
-          message: Client has been throttled by exceeding daily limit (175 requests/day)
+          message: Client has been throttled by exceeding daily limit (475 requests/day)
     """
 
     if 'month' and 'year' not in request.data:
@@ -390,7 +390,7 @@ def get_today_date_view(request):
 
     responseMessages:
         - code: 429
-          message: Client has been throttled by exceeding daily limit (175 requests/day)
+          message: Client has been throttled by exceeding daily limit (475 requests/day)
     """
 
     return Response(get_today_date().__dict__)
@@ -433,7 +433,7 @@ def validate_id_view(request):
         - code: 400
           message: Identity number is not provided
         - code: 429
-          message: Client has been throttled by exceeding daily limit (175 requests/day)
+          message: Client has been throttled by exceeding daily limit (475 requests/day)
     """
     if 'number' not in request.data:
         return Response({'message': 'Identity number is not provided'}, status.HTTP_400_BAD_REQUEST)

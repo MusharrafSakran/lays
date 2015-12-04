@@ -99,7 +99,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.AnonRateThrottle',
     ),
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '175/day',
+        'anon': '475/day',
     },
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
     'DEFAULT_VERSION': '1.0'
