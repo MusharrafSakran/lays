@@ -2,11 +2,11 @@
 @import url('http://fonts.googleapis.com/css?family=Lato:400,300,700,900');
 
 body {
-	background: #36465D;
+	/*background: #36465D;*/
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     font-size: 16px;
-    color: #36465D;
+    /*color: #36465D;*/
     line-height: 1.6em;
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
@@ -97,8 +97,8 @@ a:after {
 
 .btn-theme  {
   color: #fff;
-  background-color: #4F92AF;
-  border-color: #4F92AF;
+  background-color: #26D6CF;
+  border-color: #26D6CF;
 }
 .btn-theme:hover  {
   color: #fff;
@@ -125,7 +125,8 @@ form.signup input.form-control:focus {
 	text-align: center;
 	padding: 50px 0;
 	/*background: url(../img/main-bg.jpg) no-repeat center top;*/
-    background-color: #36465D;
+    /*background-color: #36465D;*/
+    background-image: url("https://storage.googleapis.com/util_services/_0040_clouds.jpg");
 	background-attachment: relative;
 	background-position: center center;
 	min-height: 650px;
@@ -146,14 +147,18 @@ form.signup input.form-control:focus {
 #wrapper h1 {
 	margin-top: 60px;
 	margin-bottom: 40px;
-	color: #fff;
+	color: #FFF;
 	font-size: 45px;
 	font-weight: 900;
 	letter-spacing: -1px;
 }
 
+#wrapper h3 {
+    color: #FF6600;
+}
+
 h2.subtitle {
-	color: #fff;
+	color: #7851A1;
 	font-size: 24px;
 }
 
