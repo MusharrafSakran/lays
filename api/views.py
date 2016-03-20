@@ -443,8 +443,8 @@ def validate_id_view(request):
     return Response(validate_id(number))
 
 
-@api_view(["POST"])
-def test_sms_view(request):
-    logger.info('Logger is working!')
-    logger.info(request.data)
-    return Response(200)
+# @api_view(["POST"])
+# def test_sms_view(request):
+#     logger.info('Logger is working!')
+#     logger.info(request.data)
+#     return Response(200)
