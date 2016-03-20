@@ -443,5 +443,6 @@ def validate_id_view(request):
 
 @api_view(["POST"])
 def test_sms_view(request):
+    print 'hi'
     print request.data
     return Response(200)
