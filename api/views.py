@@ -2,10 +2,12 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+import logging
 # Create your views here.
 from api.utils import validate_iban, detect_iban_bank, validate_mobile_number, convert_greg_to_hijri, \
     convert_hijri_to_greg, get_hijri_month_length, get_today_date, validate_id
 
+logger = logging.getLogger(__name__)
 
 @api_view(["POST"])
 def validate_iban_view(request):
@@ -443,6 +445,6 @@ def validate_id_view(request):
 
 @api_view(["POST"])
 def test_sms_view(request):
-    print 'hi'
-    print request.data
+    logger.info('Logger is working!')
+    logger.info(request.data)
     return Response(200)
