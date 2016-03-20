@@ -439,3 +439,9 @@ def validate_id_view(request):
         return Response({'message': 'Identity number is not provided'}, status.HTTP_400_BAD_REQUEST)
     number = request.data['number']
     return Response(validate_id(number))
+
+
+@api_view(["POST"])
+def test_sms_view(request):
+    print request.data
+    return Response(200)
