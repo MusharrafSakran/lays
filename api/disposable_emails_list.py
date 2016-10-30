@@ -2127,4 +2127,6 @@ disposable_emails = ["0-mail.com",
                      "zumpul.com",
                      "zxcv.com",
                      "zxcvbnm.com",
-                     "zzz.com"]
+                     "zzz.com",
+                     "maileme101.com",
+                     "maileme101.com"]
