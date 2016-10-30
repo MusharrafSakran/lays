@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+import re
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import logging
 # Create your views here.
 from api.utils import validate_iban, detect_iban_bank, validate_mobile_number, convert_greg_to_hijri, \
-    convert_hijri_to_greg, get_hijri_month_length, get_today_date, validate_id
+    convert_hijri_to_greg, get_hijri_month_length, get_today_date, validate_id, validate_disposable_email
 
 logger = logging.getLogger(__name__)
 
@@ -441,6 +442,47 @@ def validate_id_view(request):
         return Response({'message': 'Identity number is not provided'}, status.HTTP_400_BAD_REQUEST)
     number = request.data['number']
     return Response(validate_id(number))
+
+
+@api_view(["POST"])
+def validate_disposable_email_view(request):
+    """
+    Validate ANY Email address if it's disposable or not
+    ---
+    # YAML (must be separated by `---`)
+
+    type:
+      email:
+        required: true
+        type: string
+      disposable:
+        required: true
+        type: boolean
+
+    omit_serializer: true
+
+    parameters_strategy: merge
+    omit_parameters:
+        - path
+    parameters:
+        - name: email
+          description: Email Address
+          required: true
+          type: string
+          paramType: form
+
+    responseMessages:
+        - code: 400
+          message: Email Address is not provided or incorrect
+        - code: 429
+          message: Client has been throttled by exceeding daily limit (475 requests/day)
+    """
+    if 'email' not in request.data:
+        return Response({'message': 'Email Address is not provided'}, status.HTTP_400_BAD_REQUEST)
+    email = request.data['email']
+    if not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+        return Response({'message': 'Email Address is incorrect'}, status.HTTP_400_BAD_REQUEST)
+    return Response(validate_disposable_email(email))
 
 
 # @api_view(["POST"])

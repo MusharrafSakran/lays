@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import re
 from umalqurra.hijri_date import HijriDate
+import disposable_emails_list
+
 __author__ = 'MUSHARRAF'
 _country2length = dict(
     AL=28, AD=24, AT=20, AZ=28, BE=16, BH=22, BA=20, BR=29,
@@ -147,3 +149,12 @@ def validate_id(number):
             summ += int(value)
     return {'valid': summ % 10 == 0, 'type': dict(_identity_types)[int(type)] if summ % 10 == 0 else '',
             'type_ar': dict(_identity_types_ar)[int(type)].decode('utf-8') if summ % 10 == 0 else '', 'number': number}
+
+
+def validate_disposable_email(email):
+    disposable = False
+    domain = email.split("@", 1)[1]
+    print domain
+    if domain in disposable_emails_list.disposable_emails:
+        disposable = True
+    return {'email': email, 'disposable': disposable}

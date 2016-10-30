@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^get-hijri-month-length/$', views.get_hijri_month_length_view),
     url(r'^get-today-date/$', views.get_today_date_view),
     url(r'^validate-identity/$', views.validate_id_view),
+    url(r'^validate-disposable-email/$', views.validate_disposable_email_view),
     # url(r'^test-sms/$', views.test_sms_view),
 ]
