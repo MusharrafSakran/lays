@@ -12,13 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-ENV = ''
-try:
-    with open('/etc/lays-env.txt') as f:
-        ENV = f.read().strip()
-except IOError, exp:
-    ENV = 'LOCAL'
-    pass
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,24 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-try:
-    with open('/etc/lays-secret-key.txt') as f:
-        SECRET_KEY = f.read().strip()
-except IOError, exp:
-    pass
+SECRET_KEY = 'j9w*o=9(j2^!_qw=t8qzc305misu1lk&z6*+vw@z$c9aa7el4c'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if ENV == 'PRODUCTION':
-    DEBUG = False
-    ALLOWED_HOSTS = ['util.services', ]
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_SECURE = True
-    STATIC_ROOT = os.path.join(BASE_DIR, "static_files/")
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-else:
-    DEBUG = True
-    ALLOWED_HOSTS = []
+
+DEBUG = True
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -145,30 +128,14 @@ WSGI_APPLICATION = 'lays.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-if ENV == 'PRODUCTION':
-    db_password = ''
-    try:
-        with open('/etc/lays-db-password.txt') as f:
-            db_password = f.read().strip()
-    except IOError, exp:
-        pass
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'LAYS',
-            'USER': 'lays',
-            'PASSWORD': db_password,
-            'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
-            'PORT': '3306',
-        }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
+}
 
 
 # Internationalization
